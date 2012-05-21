@@ -15,6 +15,7 @@
 
 
 #import "RWSwitch.h"
+#import <QuartzCore/CAAnimation.h>
 
 @implementation RWSwitch;
 
@@ -23,7 +24,7 @@
 - (void) _initialize {
     _max = 1.0;
     _continuous = YES;
-
+    _lastValue = RWSwitchLeftSide;  // TODO: make this setable
 
     _backgroundView = [[NSImageView alloc] initWithFrame:self.bounds];
     [self addSubview:_backgroundView];
@@ -42,6 +43,8 @@
     return self;
 }
 
+
+
 #if !__has_feature(objc_arc)
 - (void) dealloc {
     [_backgroundView release];
@@ -50,7 +53,11 @@
     [super dealloc];
 }
 #endif
-
+/*
++ (Class) cellClass {
+    return [NSActionCell class];
+} 
+*/
 - (id) initWithCoder:(NSCoder*)coder {
     if ((self = [super initWithCoder:coder])) {
         [self _initialize];
@@ -88,16 +95,30 @@
 }
 
 - (NSImage*) backgroundImage {
-    return _backgroundView.image;
+    return _backgroundImage;
 }
 
 - (void) setBackgroundImage:(NSImage*)image {
+    _backgroundImage = image;
+    
+    [self _setCurrentSliderImage: _backgroundImage];
+}
+
+- (void) _setCurrentSliderImage: (NSImage*) image {
     int yOffset = (self.bounds.size.height - image.size.height)/ 4;
     CGRect newFrame = _backgroundView.frame;
     newFrame.origin.y = yOffset;
     _backgroundView.frame = newFrame;
     _backgroundView.image = image;
     
+}
+
+- (NSImage*) alternativeBackgroundImage {
+    return _alternativeBackgroundImage;
+}
+
+- (void) setAlternativeBackgroundImage: (NSImage*) image {
+    _alternativeBackgroundImage = image;    
 }
 
 - (NSImage*) thumbImage {
@@ -167,8 +188,80 @@
  }
  */
 
-- (BOOL)startTrackingAt:(NSPoint)startPoint inView:(NSView *)controlView {
-    NSLog(@"startTracking works");
-    return YES;
+- (void)mouseDown: (NSEvent *)event
+{
+
+    NSEvent *nextEvent = nil;
+    while([nextEvent type] != NSLeftMouseUp)
+    {
+//        [pool release];
+//        pool = [[NSAutoreleasePool alloc] init];
+        NSLog(@"looping");
+        nextEvent = [[self window] nextEventMatchingMask: NSLeftMouseDraggedMask | NSLeftMouseUpMask];
+        
+        if (nextEvent.type == NSLeftMouseUp)
+            [self handleClickWithEvent: nextEvent];
+    }
+}
+
+- (void) handleClickWithEvent: (NSEvent*) event {
+    NSPoint p = [self convertPoint: [event locationInWindow] fromView: nil];
+    int halfWayMark = _backgroundView.frame.size.width / 2;
+    
+    if (p.x > halfWayMark) {
+        NSLog(@"right side");
+        if (_lastValue == RWSwitchLeftSide)
+            [self moveSliderTo: RWSwitchRightSide];
+        else
+            NSLog(@"did ignore");
+    }
+    else {
+        NSLog(@"left side");
+        if (_lastValue == RWSwitchRightSide)
+            [self moveSliderTo: RWSwitchLeftSide];
+        else
+            NSLog(@"did ignore");
+    }
+}
+
+- (void) moveSliderTo: (enum RWSwitchCurrentValue) newSide {
+    CABasicAnimation* animation = [CABasicAnimation animation];
+    animation.delegate = self;
+    
+    [ _thumbView setAnimations: [NSDictionary dictionaryWithObject:animation forKey:@"frameOrigin"] ];
+    if (newSide == RWSwitchRightSide) {
+        if (_alternativeBackgroundImage)
+            [self _setCurrentSliderImage: _alternativeBackgroundImage];
+            
+        [[_thumbView animator] setFrame:  [self sliderRightFramePosition]];
+        _lastValue = newSide;
+    }
+    
+    if (newSide == RWSwitchLeftSide) {
+        [self _setCurrentSliderImage: _backgroundImage];
+        [[_thumbView animator] setFrame:  [self sliderLeftFramePosition]];
+        _lastValue = newSide;
+
+    }
+    //NSLog(@"here we are");
+        
+}
+
+- (CGRect) sliderLeftFramePosition {
+    return CGRectMake(_margin, _margin, _thumbView.image.size.width, _thumbView.image.size.height);
+}
+
+- (CGRect) sliderRightFramePosition {
+    float width = _thumbView.image.size.width;
+    return CGRectMake(self.frame.size.width - width, 
+                      _margin, 
+                      width, 
+                      _thumbView.image.size.height);
+}
+
+- (void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (flag) {
+        [self sendAction: self.action to:self.target];
+    }
 }
 @end
