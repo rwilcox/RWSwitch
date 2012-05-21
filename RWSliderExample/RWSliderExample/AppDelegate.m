@@ -44,6 +44,12 @@
 }
 - (IBAction)buttonWasClicked:(id)sender {
     NSLog(@"Here I am");
+    
+   if(switchWorkaroundControl.state == RWSwitchLeftSide)
+       NSLog(@"Look Mom, I'm on the left side!");
+    else
+        NSLog(@"Look Mom, I'm on the right side");
+        
 }
 
 - (RWSwitch*) slider {
