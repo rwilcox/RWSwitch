@@ -1,0 +1,333 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		088422931569B7950005386E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088422921569B7950005386E /* QuartzCore.framework */; };
+		088422B31569F4090005386E /* XCodeWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = 088422B21569F4090005386E /* XCodeWorkaround.m */; };
+		089D985B156972E600A20848 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089D985A156972E600A20848 /* Cocoa.framework */; };
+		089D9865156972E600A20848 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089D9863156972E600A20848 /* InfoPlist.strings */; };
+		089D9867156972E600A20848 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 089D9866156972E600A20848 /* main.m */; };
+		089D986B156972E600A20848 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 089D9869156972E600A20848 /* Credits.rtf */; };
+		089D986E156972E600A20848 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 089D986D156972E600A20848 /* AppDelegate.m */; };
+		089D9871156972E600A20848 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089D986F156972E600A20848 /* MainMenu.xib */; };
+		089D987B156973FA00A20848 /* switch-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 089D9878156973FA00A20848 /* switch-btn.png */; };
+		089D987C156973FA00A20848 /* switch-locked.png in Resources */ = {isa = PBXBuildFile; fileRef = 089D9879156973FA00A20848 /* switch-locked.png */; };
+		089D987D156973FA00A20848 /* switch-unlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = 089D987A156973FA00A20848 /* switch-unlocked.png */; };
+		089D98801569766F00A20848 /* RWSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 089D987F1569766F00A20848 /* RWSwitch.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		088422921569B7950005386E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		088422B11569F4090005386E /* XCodeWorkaround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XCodeWorkaround.h; path = ../XCodeWorkaround.h; sourceTree = "<group>"; };
+		088422B21569F4090005386E /* XCodeWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XCodeWorkaround.m; path = ../XCodeWorkaround.m; sourceTree = "<group>"; };
+		089D9856156972E600A20848 /* RWSliderExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RWSliderExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		089D985A156972E600A20848 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		089D985D156972E600A20848 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		089D985E156972E600A20848 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		089D985F156972E600A20848 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		089D9862156972E600A20848 /* RWSliderExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RWSliderExample-Info.plist"; sourceTree = "<group>"; };
+		089D9864156972E600A20848 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		089D9866156972E600A20848 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		089D9868156972E600A20848 /* RWSliderExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RWSliderExample-Prefix.pch"; sourceTree = "<group>"; };
+		089D986A156972E600A20848 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		089D986C156972E600A20848 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		089D986D156972E600A20848 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		089D9870156972E600A20848 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		089D9878156973FA00A20848 /* switch-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch-btn.png"; sourceTree = "<group>"; };
+		089D9879156973FA00A20848 /* switch-locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch-locked.png"; sourceTree = "<group>"; };
+		089D987A156973FA00A20848 /* switch-unlocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch-unlocked.png"; sourceTree = "<group>"; };
+		089D987E1569766200A20848 /* RWSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RWSwitch.h; path = ../RWSwitch.h; sourceTree = "<group>"; };
+		089D987F1569766F00A20848 /* RWSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RWSwitch.m; path = ../RWSwitch.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		089D9853156972E600A20848 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				089D985B156972E600A20848 /* Cocoa.framework in Frameworks */,
+				088422931569B7950005386E /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089D984B156972E600A20848 = {
+			isa = PBXGroup;
+			children = (
+				089D9860156972E600A20848 /* RWSliderExample */,
+				089D987E1569766200A20848 /* RWSwitch.h */,
+				089D987F1569766F00A20848 /* RWSwitch.m */,
+				088422B11569F4090005386E /* XCodeWorkaround.h */,
+				088422B21569F4090005386E /* XCodeWorkaround.m */,
+				089D9859156972E600A20848 /* Frameworks */,
+				089D9857156972E600A20848 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		089D9857156972E600A20848 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				089D9856156972E600A20848 /* RWSliderExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		089D9859156972E600A20848 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				089D985A156972E600A20848 /* Cocoa.framework */,
+				089D985C156972E600A20848 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		089D985C156972E600A20848 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				088422921569B7950005386E /* QuartzCore.framework */,
+				089D985D156972E600A20848 /* AppKit.framework */,
+				089D985E156972E600A20848 /* CoreData.framework */,
+				089D985F156972E600A20848 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		089D9860156972E600A20848 /* RWSliderExample */ = {
+			isa = PBXGroup;
+			children = (
+				089D9877156973FA00A20848 /* art */,
+				089D986C156972E600A20848 /* AppDelegate.h */,
+				089D986D156972E600A20848 /* AppDelegate.m */,
+				089D986F156972E600A20848 /* MainMenu.xib */,
+				089D9861156972E600A20848 /* Supporting Files */,
+			);
+			path = RWSliderExample;
+			sourceTree = "<group>";
+		};
+		089D9861156972E600A20848 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				089D9862156972E600A20848 /* RWSliderExample-Info.plist */,
+				089D9863156972E600A20848 /* InfoPlist.strings */,
+				089D9866156972E600A20848 /* main.m */,
+				089D9868156972E600A20848 /* RWSliderExample-Prefix.pch */,
+				089D9869156972E600A20848 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		089D9877156973FA00A20848 /* art */ = {
+			isa = PBXGroup;
+			children = (
+				089D9878156973FA00A20848 /* switch-btn.png */,
+				089D9879156973FA00A20848 /* switch-locked.png */,
+				089D987A156973FA00A20848 /* switch-unlocked.png */,
+			);
+			path = art;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		089D9855156972E600A20848 /* RWSliderExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 089D9874156972E600A20848 /* Build configuration list for PBXNativeTarget "RWSliderExample" */;
+			buildPhases = (
+				089D9852156972E600A20848 /* Sources */,
+				089D9853156972E600A20848 /* Frameworks */,
+				089D9854156972E600A20848 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RWSliderExample;
+			productName = RWSliderExample;
+			productReference = 089D9856156972E600A20848 /* RWSliderExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089D984D156972E600A20848 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Wilcox Development Solutions";
+			};
+			buildConfigurationList = 089D9850156972E600A20848 /* Build configuration list for PBXProject "RWSliderExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 089D984B156972E600A20848;
+			productRefGroup = 089D9857156972E600A20848 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				089D9855156972E600A20848 /* RWSliderExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		089D9854156972E600A20848 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				089D9865156972E600A20848 /* InfoPlist.strings in Resources */,
+				089D986B156972E600A20848 /* Credits.rtf in Resources */,
+				089D9871156972E600A20848 /* MainMenu.xib in Resources */,
+				089D987B156973FA00A20848 /* switch-btn.png in Resources */,
+				089D987C156973FA00A20848 /* switch-locked.png in Resources */,
+				089D987D156973FA00A20848 /* switch-unlocked.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		089D9852156972E600A20848 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				089D9867156972E600A20848 /* main.m in Sources */,
+				089D986E156972E600A20848 /* AppDelegate.m in Sources */,
+				089D98801569766F00A20848 /* RWSwitch.m in Sources */,
+				088422B31569F4090005386E /* XCodeWorkaround.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089D9863156972E600A20848 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089D9864156972E600A20848 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		089D9869156972E600A20848 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089D986A156972E600A20848 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		089D986F156972E600A20848 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089D9870156972E600A20848 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		089D9872156972E600A20848 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		089D9873156972E600A20848 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		089D9875156972E600A20848 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RWSliderExample/RWSliderExample-Prefix.pch";
+				INFOPLIST_FILE = "RWSliderExample/RWSliderExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		089D9876156972E600A20848 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RWSliderExample/RWSliderExample-Prefix.pch";
+				INFOPLIST_FILE = "RWSliderExample/RWSliderExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		089D9850156972E600A20848 /* Build configuration list for PBXProject "RWSliderExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				089D9872156972E600A20848 /* Debug */,
+				089D9873156972E600A20848 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		089D9874156972E600A20848 /* Build configuration list for PBXNativeTarget "RWSliderExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				089D9875156972E600A20848 /* Debug */,
+				089D9876156972E600A20848 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089D984D156972E600A20848 /* Project object */;
+}
