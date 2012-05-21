@@ -20,6 +20,7 @@
 @implementation RWSwitch;
 
 @synthesize value=_value, minimumValue=_min, maximumValue=_max, continuous=_continuous, extraMargin=_margin;
+@synthesize target, action; // provide our own action target and selector because we bypass NSActionCell totally for this button
 
 - (void) _initialize {
     _max = 1.0;
@@ -64,6 +65,8 @@
 - (void) encodeWithCoder:(NSCoder*)coder {
     [self doesNotRecognizeSelector:_cmd];
 }
+
+
 
 - (void) _updateThumb {
     CGRect bounds = self.bounds;
@@ -230,6 +233,10 @@
         
 }
 
+- (NSInteger) state {
+    return _lastValue;
+}
+
 - (CGRect) sliderLeftFramePosition {
     return CGRectMake(_margin, _margin, _thumbView.image.size.width, _thumbView.image.size.height);
 }
@@ -247,4 +254,5 @@
         [self sendAction: self.action to:self.target];
     }
 }
+
 @end
