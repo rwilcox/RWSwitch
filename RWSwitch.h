@@ -19,12 +19,23 @@ enum RWSwitchCurrentValue {
     RWSwitchRightSide
 };
 
-// This is SliderControl from <http://code.google.com/p/cooliris-toolkit>
-// BUT it has been ported to desktop Cocoa by Ryan Wilcox of Wilcox Development Solutions
-//
-// It acts like UISwitch, which does not exist on Mac OS X
-// (no, you can't make a NSSlider work like this, I tried)
-//
+/*!
+ @class RWSwitch
+ @abstract a UISwitch control for desktop Cocoa
+ @description This is a highly modified version of SliderControl from <http://code.google.com/p/cooliris-toolkit>
+    BUT it has been ported to desktop Cocoa by Ryan Wilcox of Wilcox Development Solutions
+
+    It acts like UISwitch, which does not exist on Mac OS X
+    (no, you can't make a NSSlider work like this, I tried)
+ 
+    This version also has the advantage of being able to specify background, alternative background and thumb
+    images.
+ 
+    Using: 
+    Drag a custom NSView out in IB, set its class to RWSwitch, and set the target of the view to
+    whatever class you wish. The target/action will be called when the switch changes value, after
+    the animation moving the switch has completed.
+*/
 @interface RWSwitch : NSButton {
 @private
     float _value;
