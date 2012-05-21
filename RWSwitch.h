@@ -25,7 +25,7 @@ enum RWSwitchCurrentValue {
 // It acts like UISwitch, which does not exist on Mac OS X
 // (no, you can't make a NSSlider work like this, I tried)
 //
-@interface RWSwitch : NSControl {
+@interface RWSwitch : NSButton {
 @private
     float _value;
     float _min;

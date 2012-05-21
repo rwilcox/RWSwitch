@@ -53,11 +53,7 @@
     [super dealloc];
 }
 #endif
-/*
-+ (Class) cellClass {
-    return [NSActionCell class];
-} 
-*/
+
 - (id) initWithCoder:(NSCoder*)coder {
     if ((self = [super initWithCoder:coder])) {
         [self _initialize];
@@ -100,12 +96,13 @@
 
 - (void) setBackgroundImage:(NSImage*)image {
     _backgroundImage = image;
-    
+   // [self _initialize];
     [self _setCurrentSliderImage: _backgroundImage];
 }
 
 - (void) _setCurrentSliderImage: (NSImage*) image {
     int yOffset = (self.bounds.size.height - image.size.height)/ 4;
+    yOffset -= 10;  // TODO: Huh, why this?
     CGRect newFrame = _backgroundView.frame;
     newFrame.origin.y = yOffset;
     _backgroundView.frame = newFrame;
@@ -146,62 +143,49 @@
     [self _updateThumb];
 }
 
-/*
- - (BOOL) beginTrackingWithTouch:(UITouch*)touch withEvent:(UIEvent*)event {
- if (![super beginTrackingWithTouch:touch withEvent:event]) {
- return NO;
- }
- 
- _lastValue = _value;
- 
- return YES;
- }
- 
- - (BOOL) continueTrackingWithTouch:(UITouch*)touch withEvent:(UIEvent*)event {
- if (![super continueTrackingWithTouch:touch withEvent:event]) {
- return NO;
- }
- 
- [self _updateValueForLocation:[touch locationInView:self]];
- if (_continuous && (_value != _lastValue)) {
- [self sendActionsForControlEvents:UIControlEventValueChanged];
- _lastValue = _value;
- }
- 
- return YES;
- }
- 
- - (void) endTrackingWithTouch:(UITouch*)touch withEvent:(UIEvent*)event {
- [super endTrackingWithTouch:touch withEvent:event];
- 
- [self _updateValueForLocation:[touch locationInView:self]];
- 
- if (_value != _lastValue) {
- [self sendActionsForControlEvents:UIControlEventValueChanged];
- }
- }
- 
- - (void) cancelTrackingWithEvent:(UIEvent*)event {
- [super cancelTrackingWithEvent:event];
- 
- ;
- }
- */
+
+- (void)mouseDragged:(NSEvent *)theEvent {
+    [self handleDragWithEvent: theEvent];
+
+}
 
 - (void)mouseDown: (NSEvent *)event
 {
 
     NSEvent *nextEvent = nil;
-    while([nextEvent type] != NSLeftMouseUp)
+    while(  ([nextEvent type] != NSLeftMouseUp) && ( [nextEvent type] != NSLeftMouseDragged )  )
     {
-//        [pool release];
-//        pool = [[NSAutoreleasePool alloc] init];
-        NSLog(@"looping");
         nextEvent = [[self window] nextEventMatchingMask: NSLeftMouseDraggedMask | NSLeftMouseUpMask];
         
         if (nextEvent.type == NSLeftMouseUp)
             [self handleClickWithEvent: nextEvent];
+        
+        if (nextEvent.type == NSLeftMouseDragged)
+            [self handleDragWithEvent: nextEvent];
     }
+}
+
+- (void) handleDragWithEvent: (NSEvent*) event {
+    NSPoint p = [self convertPoint: [event locationInWindow] fromView: nil];
+    CGRect newPosition = _thumbView.frame;
+    CGRect rightFrame = [self sliderRightFramePosition];
+    int halfWayMark = _backgroundView.frame.size.width / 2;
+
+    if (p.x > halfWayMark) {
+        newPosition.origin.x = MIN(p.x, 
+                               _backgroundView.frame.origin.x + _backgroundView.frame.size.width);
+    } else {
+        newPosition.origin.x = MAX(p.x, 
+                                   _backgroundView.frame.origin.x + _backgroundView.frame.size.width);
+    }
+    
+    [[_thumbView animator] setFrame:  newPosition];
+    if (p.x > halfWayMark)
+        [self moveSliderTo: RWSwitchRightSide];
+    else {
+        [self moveSliderTo: RWSwitchLeftSide];
+    }
+    
 }
 
 - (void) handleClickWithEvent: (NSEvent*) event {
@@ -212,15 +196,15 @@
         NSLog(@"right side");
         if (_lastValue == RWSwitchLeftSide)
             [self moveSliderTo: RWSwitchRightSide];
-        else
-            NSLog(@"did ignore");
+//        else
+//            NSLog(@"did ignore");
     }
     else {
-        NSLog(@"left side");
+//        NSLog(@"left side");
         if (_lastValue == RWSwitchRightSide)
             [self moveSliderTo: RWSwitchLeftSide];
-        else
-            NSLog(@"did ignore");
+//        else
+//            NSLog(@"did ignore");
     }
 }
 
@@ -243,7 +227,6 @@
         _lastValue = newSide;
 
     }
-    //NSLog(@"here we are");
         
 }
 
