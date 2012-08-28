@@ -105,7 +105,7 @@
 
 - (void) _setCurrentSliderImage: (NSImage*) image {
     int yOffset = (self.bounds.size.height - image.size.height)/ 4;
-    yOffset -= 10;  // TODO: Huh, why this?
+    yOffset -= 8;  // TODO: Huh, why this?
     CGRect newFrame = _backgroundView.frame;
     newFrame.origin.y = yOffset;
     _backgroundView.frame = newFrame;
@@ -184,9 +184,9 @@
     
     [[_thumbView animator] setFrame:  newPosition];
     if (p.x > halfWayMark)
-        [self moveSliderTo: RWSwitchRightSide];
+        [self moveSliderTo: RWSwitchRightSide animate:YES];
     else {
-        [self moveSliderTo: RWSwitchLeftSide];
+        [self moveSliderTo: RWSwitchLeftSide animate:YES];
     }
     
 }
@@ -198,20 +198,20 @@
     if (p.x > halfWayMark) {
         NSLog(@"right side");
         if (_lastValue == RWSwitchLeftSide)
-            [self moveSliderTo: RWSwitchRightSide];
+            [self moveSliderTo: RWSwitchRightSide animate:YES];
 //        else
 //            NSLog(@"did ignore");
     }
     else {
 //        NSLog(@"left side");
         if (_lastValue == RWSwitchRightSide)
-            [self moveSliderTo: RWSwitchLeftSide];
+            [self moveSliderTo: RWSwitchLeftSide animate:YES];
 //        else
 //            NSLog(@"did ignore");
     }
 }
 
-- (void) moveSliderTo: (enum RWSwitchCurrentValue) newSide {
+- (void) moveSliderTo: (enum RWSwitchCurrentValue) newSide animate: (BOOL) doAnimation{
     CABasicAnimation* animation = [CABasicAnimation animation];
     animation.delegate = self;
     
@@ -219,14 +219,23 @@
     if (newSide == RWSwitchRightSide) {
         if (_alternativeBackgroundImage)
             [self _setCurrentSliderImage: _alternativeBackgroundImage];
-            
-        [[_thumbView animator] setFrame:  [self sliderRightFramePosition]];
+        
+        if (doAnimation)
+            [[_thumbView animator] setFrame:  [self sliderRightFramePosition]];
+        else
+            [_thumbView setFrame:  [self sliderRightFramePosition]];
+        
         _lastValue = newSide;
     }
     
     if (newSide == RWSwitchLeftSide) {
         [self _setCurrentSliderImage: _backgroundImage];
-        [[_thumbView animator] setFrame:  [self sliderLeftFramePosition]];
+        
+        if (doAnimation)
+            [[_thumbView animator] setFrame:  [self sliderLeftFramePosition]];
+        else
+            [_thumbView setFrame:  [self sliderLeftFramePosition]];
+        
         _lastValue = newSide;
 
     }

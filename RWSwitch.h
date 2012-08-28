@@ -59,7 +59,7 @@ enum RWSwitchCurrentValue {
 @property(nonatomic, retain) NSImage* thumbImage;  // Default is nil
 @property(nonatomic) CGFloat extraMargin;  // Default is 0.0
 
-@property(weak) id target;
+@property(strong) id target;
 @property SEL action;
 
 /*!
@@ -67,5 +67,7 @@ enum RWSwitchCurrentValue {
  @abstract Returns the RWSwitchCurrentValue state of the control
 */
 - (NSInteger) state;
+
+- (void) moveSliderTo: (enum RWSwitchCurrentValue) newSide animate: (BOOL) doAnimation;
 
 @end
